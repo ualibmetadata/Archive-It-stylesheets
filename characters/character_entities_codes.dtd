@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE xsl:stylesheet [
+    <!ENTITY % character_entities SYSTEM "../characters/character_entities.dtd">
+    %character_entities;
+]>
+
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
+    exclude-result-prefixes="xs xd"
+    version="2.0">
+    
+    <xd:doc scope="stylesheet">
+        <xd:desc>
+            <xd:p>XSLT character map based on character entities DTD by Rick Jelliffe. This
+                stylesheet maps a selection of Unicode symbols and special characters to replace entities for web archive metadata.</xd:p>
+            <xd:p><xd:b>Created on:</xd:b> Nov 28, 2013</xd:p>
+            <xd:p><xd:b>Author:</xd:b> Mariana Paredes-Olea, Bibloiographic Services, University of
+                Alberta Libraries</xd:p>
+            <xd:p><xd:b>Revisions:</xd:b></xd:p>
+            <xd:ul>
+                <xd:li></xd:li>
+            </xd:ul>
+        </xd:desc>
+    </xd:doc>
+    
+<xsl:character-map name="entities">
+        <xsl:output-character character="&num;" string="#"/> <!--number sign-->
+        <xsl:output-character character="&dollar;" string="$"/> <!--dollar sign-->
+        <xsl:output-character character="&percnt;" string="&#37;"/> <!--percent sign-->
+        <xsl:output-character character="&plus;" string="+"/> <!--plus sign B:-->
+        <xsl:output-character character="&pound;" string="&#165;"/> <!--pound sign-->
+        <xsl:output-character character="&deg;" string="&#176;"/> <!--degree sign-->
+        <xsl:output-character character="&frac34;" string="&#190;"/> <!--fraction three-quarters-->
+        <xsl:output-character character="&Aacute;" string="&#193;"/> <!-- capital A, acute accent -->
+        <xsl:output-character character="&Acirc;" string="&#194;"/> <!-- capital A, circumflex accent -->
+        <xsl:output-character character="&Auml;" string="&#196;"/> <!-- capital A, dieresis or umlaut mark -->
+        <xsl:output-character character="&AElig;" string="&#198;"/> <!-- capital AE diphthong (ligature) -->
+        <xsl:output-character character="&Eacute;" string="&#201;"/> <!-- capital E, acute accent -->
+        <xsl:output-character character="&Euml;" string="&#203;"/> <!-- capital E, dieresis or umlaut mark -->
+        <xsl:output-character character="&Icirc;" string="&#206;"/> <!-- capital I, circumflex accent -->
+        <xsl:output-character character="&Iuml;" string="&#207;"/> <!-- capital I, dieresis or umlaut mark -->
+        <xsl:output-character character="&Oacute;" string="&#211;"/> <!-- capital O, acute accent -->
+        <xsl:output-character character="&agrave;" string="&#224;"/> <!-- small a, grave accent -->
+        <xsl:output-character character="&aacute;" string="&#225;"/> <!-- small a, acute accent -->
+        <xsl:output-character character="&acirc;" string="&#226;"/> <!-- small a, circumflex accent -->
+        <xsl:output-character character="&atilde;" string="&#227;"/> <!-- small a, tilde -->
+        <xsl:output-character character="&auml;" string="&#228;"/> <!-- small a, dieresis or umlaut mark -->
+        <xsl:output-character character="&aelig;" string="&#230;"/> <!-- small ae diphthong (ligature) -->
+        <xsl:output-character character="&ccedil;" string="&#231;"/> <!-- small c, cedilla -->
+        <xsl:output-character character="&egrave;" string="&#232;"/> <!-- small e, grave accent -->
+        <xsl:output-character character="&eacute;" string="&#233;"/> <!-- small e, acute accent -->
+        <xsl:output-character character="&ecirc;" string="&#234;"/> <!-- small e, circumflex accent -->
+        <xsl:output-character character="&euml;" string="&#235;"/> <!-- small e, dieresis or umlaut mark -->
+        <xsl:output-character character="&iacute;" string="&#237;"/> <!-- small i, acute accent -->
+        <xsl:output-character character="&iuml;" string="&#239;"/> <!-- small i, dieresis or umlaut mark -->
+        <xsl:output-character character="&ntilde;" string="&#241;"/> <!-- small n, tilde -->
+        <xsl:output-character character="&oacute;" string="&#243;"/> <!-- small o, acute accent -->
+        <xsl:output-character character="&ocirc;" string="&#244;"/> <!-- small o, circumflex accent -->
+        <xsl:output-character character="&ouml;" string="&#246;"/> <!-- small o, dieresis or umlaut mark -->
+        <xsl:output-character character="&oslash;" string="&#248;"/> <!-- small o, slash -->
+        <xsl:output-character character="&uuml;" string="&#252;"/> <!-- small u, dieresis or umlaut mark -->
+        <xsl:output-character character="&yuml;" string="&#255;"/> <!-- small y, dieresis or umlaut mark -->
+        <xsl:output-character character="&inodot;" string="&#x131;"/> <!--small i without dot-->
+        <xsl:output-character character="&ncaron;" string="&#x148;"/> <!--small n, caron-->
+        <xsl:output-character character="&OElig;" string="&#x152;"/> <!--capital OE ligature-->
+        <xsl:output-character character="&oelig;" string="&#x153;"/> <!--small oe ligature-->
+        <xsl:output-character character="&sacute;" string="&#x15B;"/> <!--small s, acute accent-->
+        <xsl:output-character character="&dash;" string="&#x2010;"/> <!--hyphen (true graphic)-->
+        <xsl:output-character character="&mdash;" string="&#x2014;"/> <!--em dash-->
+        <xsl:output-character character="&prime;" string="&#x2032;"/> <!--/prime prime or minute-->
+        <xsl:output-character character="&trade;" string="&#8482;"/> <!--trade mark sign-->
+
+        <xsl:output-character character="&acute;" string="&#180;"/> <!--acute accent-->
+        <xsl:output-character character="&breve;" string="&#x2D8;"/> <!--breve-->
+        <xsl:output-character character="&caron;" string="&#x2C7;"/> <!--caron-->
+        <xsl:output-character character="&cedil;" string="&#184;"/> <!--cedilla-->
+        <xsl:output-character character="&circ;" string="^"/> <!--circumflex accent-->
+        <xsl:output-character character="&dblac;" string="&#x2DD;"/> <!--double acute accent-->
+        <xsl:output-character character="&die;" string="&#168;"/> <!--dieresis-->
+        <xsl:output-character character="&dot;" string="&#x2D9;"/> <!--dot above-->
+        <xsl:output-character character="&grave;" string="`"/> <!--grave accent-->
+        <xsl:output-character character="&macr;" string="&#175;"/> <!--macron-->
+        <xsl:output-character character="&ogon;" string="&#x2DB;"/> <!--ogonek-->
+        <xsl:output-character character="&ring;" string="&#x2DA;"/> <!--ring-->
+        <xsl:output-character character="&tilde;" string="&#x2DC;"/> <!--tilde-->
+        <xsl:output-character character="&uml;" string="&#168;"/> <!--umlaut mark-->
+
+        <xsl:output-character character="&agr;" string="&#945;"/> <!--small alpha, Greek, U03B1 -->
+        <xsl:output-character character="&Agr;" string="&#913;"/> <!--capital Alpha, Greek, U0391 -->
+        <xsl:output-character character="&bgr;" string="&#946;"/> <!--small beta, Greek, U03B2 -->
+        <xsl:output-character character="&Bgr;" string="&#914;"/> <!--capital Beta, Greek, U0392 -->
+        <xsl:output-character character="&ggr;" string="&#947;"/> <!--small gamma, Greek, U03B3 -->
+        <xsl:output-character character="&Ggr;" string="&#915;"/> <!--capital Gamma, Greek, U0393 -->
+        <xsl:output-character character="&dgr;" string="&#948;"/> <!--small delta, Greek, U03B4 -->
+        <xsl:output-character character="&Dgr;" string="&#916;"/> <!--capital Delta, Greek, U0394 -->
+        <xsl:output-character character="&egr;" string="&#949;"/> <!--small epsilon, Greek, U03B5 -->
+        <xsl:output-character character="&Egr;" string="&#917;"/> <!--capital Epsilon, Greek, U0395 -->
+        <xsl:output-character character="&zgr;" string="&#950;"/> <!--small zeta, Greek, U03B6 -->
+        <xsl:output-character character="&Zgr;" string="&#918;"/> <!--capital Zeta, Greek, U0396 -->
+        <xsl:output-character character="&eegr;" string="&#951;"/> <!--small eta, Greek, U03B7 -->
+        <xsl:output-character character="&EEgr;" string="&#919;"/> <!--capital Eta, Greek, U0397 -->
+        <xsl:output-character character="&thgr;" string="&#952;"/> <!--small theta, Greek, U03B8 -->
+        <xsl:output-character character="&THgr;" string="&#920;"/> <!--capital Theta, Greek, U0398 -->
+        <xsl:output-character character="&igr;" string="&#953;"/> <!--small iota, Greek, U03B9 -->
+        <xsl:output-character character="&Igr;" string="&#921;"/> <!--capital Iota, Greek, U0399 -->
+        <xsl:output-character character="&kgr;" string="&#954;"/> <!--small kappa, Greek, U03BA -->
+        <xsl:output-character character="&Kgr;" string="&#922;"/> <!--capital Kappa, Greek, U039A -->
+        <xsl:output-character character="&lgr;" string="&#955;"/> <!--small lambda, Greek, U03BB -->
+        <xsl:output-character character="&Lgr;" string="&#923;"/> <!--capital Lambda, Greek, U039B -->
+        <xsl:output-character character="&mgr;" string="&#956;"/> <!--small mu, Greek, U03BC -->
+        <xsl:output-character character="&Mgr;" string="&#924;"/> <!--capital Mu, Greek, U039C -->
+        <xsl:output-character character="&ngr;" string="&#957;"/> <!--small nu, Greek, U03BD -->
+        <xsl:output-character character="&Ngr;" string="&#925;"/> <!--capital Nu, Greek, U039D -->
+        <xsl:output-character character="&xgr;" string="&#958;"/> <!--small xi, Greek, U03BE -->
+        <xsl:output-character character="&Xgr;" string="&#926;"/> <!--capital Xi, Greek, U039E -->
+        <xsl:output-character character="&ogr;" string="&#959;"/> <!--small omicron, Greek, U03BF -->
+        <xsl:output-character character="&Ogr;" string="&#927;"/> <!--capital Omicron, Greek, U039F -->
+        <xsl:output-character character="&pgr;" string="&#960;"/> <!--small pi, Greek, U03C0 -->
+        <xsl:output-character character="&Pgr;" string="&#928;"/> <!--capital Pi, Greek, U03A0 -->
+        <xsl:output-character character="&rgr;" string="&#961;"/> <!--small rho, Greek, U03C1 -->
+        <xsl:output-character character="&Rgr;" string="&#929;"/> <!--capital Rho, Greek, U03A1 -->
+        <xsl:output-character character="&sfgr;" string="&#962;"/> <!--final small sigma, Greek, U03C2 -->
+        <xsl:output-character character="&sgr;" string="&#963;"/> <!--small sigma, Greek, U03C3 -->
+        <xsl:output-character character="&Sgr;" string="&#931;"/> <!--capital Sigma, Greek, U03A3 -->
+        <xsl:output-character character="&tgr;" string="&#964;"/> <!--small tau, Greek, U03C4 -->
+        <xsl:output-character character="&Tgr;" string="&#932;"/> <!--capital Tau, Greek, U03A4 -->
+        <xsl:output-character character="&ugr;" string="&#965;"/> <!--small upsilon, Greek, U03C5 -->
+        <xsl:output-character character="&Ugr;" string="&#933;"/> <!--capital Upsilon, Greek, U03A5 -->
+        <xsl:output-character character="&phgr;" string="&#966;"/> <!--small phi, Greek, U03C6 -->
+        <xsl:output-character character="&PHgr;" string="&#934;"/> <!--capital Phi, Greek, U03A6 -->
+        <xsl:output-character character="&khgr;" string="&#967;"/> <!--small chi, Greek, U03C7 -->
+        <xsl:output-character character="&KHgr;" string="&#935;"/> <!--capital Chi, Greek, U03A7 -->
+        <xsl:output-character character="&psgr;" string="&#968;"/> <!--small psi, Greek, U03C8 -->
+        <xsl:output-character character="&PSgr;" string="&#936;"/> <!--capital Psi, Greek, U03A8 -->
+        <xsl:output-character character="&ohgr;" string="&#969;"/> <!--small omega, Greek, U03C9 -->
+        <xsl:output-character character="&OHgr;" string="&#937;"/> <!--capital Omega, Greek, U03A9 -->
+
+        <xsl:output-character character="&aacgr;" string="&#x3AC;"/> <!--small alpha, accent, Greek-->
+        <xsl:output-character character="&Aacgr;" string="&#x386;"/> <!--capital Alpha, accent, Greek-->
+        <xsl:output-character character="&eacgr;" string="&#x3AD;"/> <!--small epsilon, accent, Greek-->
+        <xsl:output-character character="&Eacgr;" string="&#x388;"/> <!--capital Epsilon, accent, Greek-->
+        <xsl:output-character character="&eeacgr;" string="&#x3AE;"/> <!--small eta, accent, Greek-->
+        <xsl:output-character character="&EEacgr;" string="&#x389;"/> <!--capital Eta, accent, Greek-->
+        <xsl:output-character character="&idigr;" string="&#x3CA;"/> <!--small iota, dieresis, Greek-->
+        <xsl:output-character character="&Idigr;" string="&#x3AA;"/> <!--capital Iota, dieresis, Greek-->
+        <xsl:output-character character="&iacgr;" string="&#x3AF;"/> <!--small iota, accent, Greek-->
+        <xsl:output-character character="&Iacgr;" string="&#x38A;"/> <!--capital Iota, accent, Greek-->
+        <xsl:output-character character="&idiagr;" string="&#x390;"/> <!--small iota, dieresis, accent, Greek-->
+        <xsl:output-character character="&oacgr;" string="&#x3CC;"/> <!--small omicron, accent, Greek-->
+        <xsl:output-character character="&Oacgr;" string="&#x38C;"/> <!--capital Omicron, accent, Greek-->
+        <xsl:output-character character="&udigr;" string="&#x3CB;"/> <!--small upsilon, dieresis, Greek-->
+        <xsl:output-character character="&Udigr;" string="&#x3AB;"/> <!--capital Upsilon, dieresis, Greek-->
+        <xsl:output-character character="&uacgr;" string="&#x3CD;"/> <!--small upsilon, accent, Greek-->
+        <xsl:output-character character="&Uacgr;" string="&#x38E;"/> <!--capital Upsilon, accent, Greek-->
+        <xsl:output-character character="&udiagr;" string="&#x3B0;"/> <!--small upsilon, dieresis, accent, = Greek-->
+        <xsl:output-character character="&Udiagr;" string="&#x3AB;"/> <!--capital Upsilon, dieresis, = accent, Greek-->
+        <xsl:output-character character="&ohacgr;" string="&#x3CE;"/> <!--small omega, accent, Greek-->
+        <xsl:output-character character="&OHacgr;" string="&#x38F;"/> <!--capital Omega, accent, Greek-->
+
+        <xsl:output-character character="&alpha;" string="&#x3B1;"/> <!--small alpha, Greek-->
+        <xsl:output-character character="&beta;" string="&#x3B2;"/> <!--small beta, Greek-->
+        <xsl:output-character character="&gamma;" string="&#x3B3;"/> <!--small gamma, Greek-->
+        <xsl:output-character character="&Gamma;" string="&#x393;"/> <!--capital Gamma, Greek-->
+        <xsl:output-character character="&gammad;" string="&#x3DC;"/> <!--/digamma-->
+        <xsl:output-character character="&delta;" string="&#x3B4;"/> <!--small delta, Greek-->
+        <xsl:output-character character="&Delta;" string="&#x394;"/> <!--capital Delta, Greek-->
+        <xsl:output-character character="&epsi;" string="&#x3B5;"/> <!--small epsilon, Greek -->
+        <xsl:output-character character="&epsiv;" string="&#x2107;"/> <!--/varepsilon ?-->
+        <xsl:output-character character="&epsis;" string="&#x1B8;"/> <!--/straightepsilon ?-->
+        <xsl:output-character character="&zeta;" string="&#x3B6;"/> <!--small zeta, Greek-->
+        <xsl:output-character character="&eta;" string="&#x3B7;"/> <!--small eta, Greek-->
+        <xsl:output-character character="&thetas;" string="&#x3B8;"/> <!--straight theta-->
+        <xsl:output-character character="&Theta;" string="&#x398;"/> <!--capital Theta, Greek-->
+        <xsl:output-character character="&thetav;" string="&#x3D1;"/> <!--/vartheta - curly or open theta-->
+        <xsl:output-character character="&iota;" string="&#x3B9;"/> <!--small iota, Greek-->
+        <xsl:output-character character="&kappa;" string="&#x3BA;"/> <!--small kappa, Greek-->
+        <xsl:output-character character="&kappav;" string="&#x3F0;"/> <!--/varkappa-->
+        <xsl:output-character character="&lambda;" string="&#x3BB;"/> <!--small lambda, Greek-->
+        <xsl:output-character character="&Lambda;" string="&#x39B;"/> <!--capital Lambda, Greek-->
+        <xsl:output-character character="&mu;" string="&#x3BC;"/> <!--small mu, Greek-->
+        <xsl:output-character character="&nu;" string="&#x3BD;"/> <!--small nu, Greek-->
+        <xsl:output-character character="&xi;" string="&#x3BE;"/> <!--small xi, Greek-->
+        <xsl:output-character character="&Xi;" string="&#x39E;"/> <!--capital Xi, Greek-->
+        <xsl:output-character character="&pi;" string="&#x3C0;"/> <!--small pi, Greek-->
+        <xsl:output-character character="&piv;" string="&#x3D6;"/> <!--/varpi-->
+        <xsl:output-character character="&Pi;" string="&#x3A0;"/> <!--capital Pi, Greek-->
+        <xsl:output-character character="&rho;" string="&#x3c1;"/> <!--small rho, Greek-->
+        <xsl:output-character character="&rhov;" string="&#x3F1;"/> <!--/varrho-->
+        <xsl:output-character character="&sigma;" string="&#x3C3;"/> <!--small sigma, Greek-->
+        <xsl:output-character character="&Sigma;" string="&#x3A3;"/> <!--capital Sigma, Greek-->
+        <xsl:output-character character="&sigmav;" string="&#x3C2;"/> <!--/varsigma-->
+        <xsl:output-character character="&tau;" string="&#x3C4;"/> <!--small tau, Greek-->
+        <xsl:output-character character="&upsi;" string="&#x3C5;"/> <!--small upsilon, Greek-->
+        <xsl:output-character character="&Upsi;" string="&#x3A5;"/> <!--capital Upsilon, Greek-->
+        <xsl:output-character character="&phis;" string="&#x3C6;"/> <!--/straightphi - straight phi-->
+        <xsl:output-character character="&Phi;" string="&#x3A6;"/> <!--capital Phi, Greek-->
+        <xsl:output-character character="&phiv;" string="&#x3D5;"/> <!--/varphi - curly or open phi-->
+        <xsl:output-character character="&chi;" string="&#x3C7;"/> <!--small chi, Greek-->
+        <xsl:output-character character="&psi;" string="&#x3C8;"/> <!--small psi, Greek-->
+        <xsl:output-character character="&Psi;" string="&#x3A8;"/> <!--capital Psi, Greek-->
+        <xsl:output-character character="&omega;" string="&#x3C9;"/> <!--small omega, Greek-->
+        <xsl:output-character character="&Omega;" string="&#x3A9;"/> <!--capital Omega, Greek-->
+
+        <!--<xsl:output-character character="&XML-GRK4-STAG;" string="">
+        <xsl:output-character character="&XML-GRK4-ETAG;" string="">-->
+
+        <xsl:output-character character="&b.alpha;" string="&#x3B1;"/> <!--small alpha, Greek-->
+        <xsl:output-character character="&b.beta;" string="&#x3B2;"/> <!--small beta, Greek-->
+        <xsl:output-character character="&b.gamma;" string="&#x3B3;"/> <!--small gamma, Greek-->
+        <xsl:output-character character="&b.Gamma;" string="&#x393;"/> <!--capital Gamma, Greek-->
+        <xsl:output-character character="&b.gammad;" string="&#x3DC;"/> <!--/digamma-->
+        <xsl:output-character character="&b.delta;" string="&#x3B4;"/> <!--small delta, Greek-->
+        <xsl:output-character character="&b.Delta;" string="&#x394;"/> <!--capital Delta, Greek-->
+        <xsl:output-character character="&b.epsi;" string="&#x3B5;"/> <!--small epsilon, Greek -->
+        <xsl:output-character character="&b.epsiv;" string="&#x2107;"/> <!--/varepsilon ?-->
+        <xsl:output-character character="&b.epsis;" string="&#x1B8;"/> <!--/straightepsilon ?-->
+        <xsl:output-character character="&b.zeta;" string="&#x3B6;"/> <!--small zeta, Greek-->
+        <xsl:output-character character="&b.eta;" string="&#x3B7;"/> <!--small eta, Greek-->
+        <xsl:output-character character="&b.thetas;" string="&#x3B8;"/> <!--straight theta-->
+        <xsl:output-character character="&b.Theta;" string="&#x398;"/> <!--capital Theta, Greek-->
+        <xsl:output-character character="&b.thetav;" string="&#x3D1;"/> <!--/vartheta - curly or open theta-->
+        <xsl:output-character character="&b.iota;" string="&#x3B9;"/> <!--small iota, Greek-->
+        <xsl:output-character character="&b.kappa;" string="&#x3BA;"/> <!--small kappa, Greek-->
+        <xsl:output-character character="&b.kappav;" string="&#x3F0;"/> <!--/varkappa-->
+        <xsl:output-character character="&b.lambda;" string="&#x3BB;"/> <!--small lambda, Greek-->
+        <xsl:output-character character="&b.Lambda;" string="&#x39B;"/> <!--capital Lambda, Greek-->
+        <xsl:output-character character="&b.mu;" string="&#x3BC;"/> <!--small mu, Greek-->
+        <xsl:output-character character="&b.nu;" string="&#x3BD;"/> <!--small nu, Greek-->
+        <xsl:output-character character="&b.xi;" string="&#x3BE;"/> <!--small xi, Greek-->
+        <xsl:output-character character="&b.Xi;" string="&#x39E;"/> <!--capital Xi, Greek-->
+        <xsl:output-character character="&b.pi;" string="&#x3C0;"/> <!--small pi, Greek-->
+        <xsl:output-character character="&b.piv;" string="&#x3D6;"/> <!--/varpi-->
+        <xsl:output-character character="&b.Pi;" string="&#x3A0;"/> <!--capital Pi, Greek-->
+        <xsl:output-character character="&b.rho;" string="&#x3c1;"/> <!--small rho, Greek-->
+        <xsl:output-character character="&b.rhov;" string="&#x3F1;"/> <!--/varrho-->
+        <xsl:output-character character="&b.sigma;" string="&#x3C3;"/> <!--small sigma, Greek-->
+        <xsl:output-character character="&b.Sigma;" string="&#x3A3;"/> <!--capital Sigma, Greek-->
+        <xsl:output-character character="&b.sigmav;" string="&#x3C2;"/> <!--/varsigma-->
+        <xsl:output-character character="&b.tau;" string="&#x3C4;"/> <!--small tau, Greek-->
+        <xsl:output-character character="&b.upsi;" string="&#x3C5;"/> <!--small upsilon, Greek-->
+        <xsl:output-character character="&b.Upsi;" string="&#x3A5;"/> <!--capital Upsilon, Greek-->
+        <xsl:output-character character="&b.phis;" string="&#x3C6;"/> <!--/straightphi - straight phi-->
+        <xsl:output-character character="&b.Phi;" string="&#x3A6;"/> <!--capital Phi, Greek-->
+        <xsl:output-character character="&b.phiv;" string="&#x3D5;"/> <!--/varphi =- curly or open phi-->
+        <xsl:output-character character="&b.chi;" string="&#x3C7;"/> <!--small chi, Greek-->
+        <xsl:output-character character="&b.psi;" string="&#x3C8;"/> <!--small psi, Greek-->
+        <xsl:output-character character="&b.Psi;" string="&#x3A8;"/> <!--capital Psi, Greek-->
+        <xsl:output-character character="&b.omega;" string="&#x3C9;"/> <!--small omega, Greek-->
+        <xsl:output-character character="&b.Omega;" string="&#x3A9;"/> <!--capital Omega, Greek-->
+
+        <xsl:output-character character="&Agrave;" string="&#192;"/> <!-- capital A, grave accent -->
+        <xsl:output-character character="&Aacute;" string="&#193;"/> <!-- capital A, acute accent -->
+        <xsl:output-character character="&Acirc;" string="&#194;"/> <!-- capital A, circumflex accent -->
+        <xsl:output-character character="&Atilde;" string="&#195;"/> <!-- capital A, tilde -->
+        <xsl:output-character character="&Auml;" string="&#196;"/> <!-- capital A, dieresis or umlaut mark -->
+        <xsl:output-character character="&Aring;" string="&#197;"/> <!-- capital A, ring -->
+        <xsl:output-character character="&AElig;" string="&#198;"/> <!-- capital AE diphthong (ligature) -->
+        <xsl:output-character character="&Ccedil;" string="&#199;"/> <!-- capital C, cedilla -->
+        <xsl:output-character character="&Egrave;" string="&#200;"/> <!-- capital E, grave accent -->
+        <xsl:output-character character="&Eacute;" string="&#201;"/> <!-- capital E, acute accent -->
+        <xsl:output-character character="&Ecirc;" string="&#202;"/> <!-- capital E, circumflex accent -->
+        <xsl:output-character character="&Euml;" string="&#203;"/> <!-- capital E, dieresis or umlaut mark -->
+        <xsl:output-character character="&Igrave;" string="&#204;"/> <!-- capital I, grave accent -->
+        <xsl:output-character character="&Iacute;" string="&#205;"/> <!-- capital I, acute accent -->
+        <xsl:output-character character="&Icirc;" string="&#206;"/> <!-- capital I, circumflex accent -->
+        <xsl:output-character character="&Iuml;" string="&#207;"/> <!-- capital I, dieresis or umlaut mark -->
+        <xsl:output-character character="&ETH;" string="&#208;"/> <!-- capital Eth, Icelandic -->
+        <xsl:output-character character="&Ntilde;" string="&#209;"/> <!-- capital N, tilde -->
+        <xsl:output-character character="&Ograve;" string="&#210;"/> <!-- capital O, grave accent -->
+        <xsl:output-character character="&Oacute;" string="&#211;"/> <!-- capital O, acute accent -->
+        <xsl:output-character character="&Ocirc;" string="&#212;"/> <!-- capital O, circumflex accent -->
+        <xsl:output-character character="&Otilde;" string="&#213;"/> <!-- capital O, tilde -->
+        <xsl:output-character character="&Ouml;" string="&#214;"/> <!-- capital O, dieresis or umlaut mark -->
+        <xsl:output-character character="&Oslash;" string="&#216;"/> <!-- capital O, slash -->
+        <xsl:output-character character="&Ugrave;" string="&#217;"/> <!-- capital U, grave accent -->
+        <xsl:output-character character="&Uacute;" string="&#218;"/> <!-- capital U, acute accent -->
+        <xsl:output-character character="&Ucirc;" string="&#219;"/> <!-- capital U, circumflex accent -->
+        <xsl:output-character character="&Uuml;" string="&#220;"/> <!-- capital U, dieresis or umlaut mark -->
+        <xsl:output-character character="&Yacute;" string="&#221;"/> <!-- capital Y, acute accent -->
+        <xsl:output-character character="&THORN;" string="&#222;"/> <!-- capital THORN, Icelandic -->
+        <xsl:output-character character="&szlig;" string="&#223;"/> <!-- small sharp s, German (sz ligature) -->
+        <xsl:output-character character="&agrave;" string="&#224;"/> <!-- small a, grave accent -->
+        <xsl:output-character character="&aacute;" string="&#225;"/> <!-- small a, acute accent -->
+        <xsl:output-character character="&acirc;" string="&#226;"/> <!-- small a, circumflex accent -->
+        <xsl:output-character character="&atilde;" string="&#227;"/> <!-- small a, tilde -->
+        <xsl:output-character character="&auml;" string="&#228;"/> <!-- small a, dieresis or umlaut mark -->
+        <xsl:output-character character="&aring;" string="&#229;"/> <!-- small a, ring -->
+        <xsl:output-character character="&aelig;" string="&#230;"/> <!-- small ae diphthong (ligature) -->
+        <xsl:output-character character="&ccedil;" string="&#231;"/> <!-- small c, cedilla -->
+        <xsl:output-character character="&egrave;" string="&#232;"/> <!-- small e, grave accent -->
+        <xsl:output-character character="&eacute;" string="&#233;"/> <!-- small e, acute accent -->
+        <xsl:output-character character="&ecirc;" string="&#234;"/> <!-- small e, circumflex accent -->
+        <xsl:output-character character="&euml;" string="&#235;"/> <!-- small e, dieresis or umlaut mark -->
+        <xsl:output-character character="&igrave;" string="&#236;"/> <!-- small i, grave accent -->
+        <xsl:output-character character="&iacute;" string="&#237;"/> <!-- small i, acute accent -->
+        <xsl:output-character character="&icirc;" string="&#238;"/> <!-- small i, circumflex accent -->
+        <xsl:output-character character="&iuml;" string="&#239;"/> <!-- small i, dieresis or umlaut mark -->
+        <xsl:output-character character="&eth;" string="&#240;"/> <!-- small eth, Icelandic -->
+        <xsl:output-character character="&ntilde;" string="&#241;"/> <!-- small n, tilde -->
+        <xsl:output-character character="&ograve;" string="&#242;"/> <!-- small o, grave accent -->
+        <xsl:output-character character="&oacute;" string="&#243;"/> <!-- small o, acute accent -->
+        <xsl:output-character character="&ocirc;" string="&#244;"/> <!-- small o, circumflex accent -->
+        <xsl:output-character character="&otilde;" string="&#245;"/> <!-- small o, tilde -->
+        <xsl:output-character character="&ouml;" string="&#246;"/> <!-- small o, dieresis or umlaut mark -->
+        <xsl:output-character character="&oslash;" string="&#248;"/> <!-- small o, slash -->
+        <xsl:output-character character="&ugrave;" string="&#249;"/> <!-- small u, grave accent -->
+        <xsl:output-character character="&uacute;" string="&#250;"/> <!-- small u, acute accent -->
+        <xsl:output-character character="&ucirc;" string="&#251;"/> <!-- small u, circumflex accent -->
+        <xsl:output-character character="&uuml;" string="&#252;"/> <!-- small u, dieresis or umlaut mark -->
+        <xsl:output-character character="&yacute;" string="&#253;"/> <!-- small y, acute accent -->
+        <xsl:output-character character="&thorn;" string="&#254;"/> <!-- small thorn, Icelandic -->
+        <xsl:output-character character="&yuml;" string="&#255;"/> <!-- small y, dieresis or umlaut mark -->
+
+        <xsl:output-character character="&abreve;" string="&#x103;"/> <!--small a, breve-->
+        <xsl:output-character character="&Abreve;" string="&#x102;"/> <!--capital A, breve-->
+        <xsl:output-character character="&amacr;" string="&#x101;"/> <!--small a, macron-->
+        <xsl:output-character character="&Amacr;" string="&#x100;"/> <!--capital A, macron-->
+        <xsl:output-character character="&aogon;" string="&#x105;"/> <!--small a, ogonek-->
+        <xsl:output-character character="&Aogon;" string="&#x104;"/> <!--capital A, ogonek-->
+        <xsl:output-character character="&cacute;" string="&#x107;"/> <!--small c, acute accent-->
+        <xsl:output-character character="&Cacute;" string="&#x106;"/> <!--capital C, acute accent-->
+        <xsl:output-character character="&ccaron;" string="&#x10D;"/> <!--small c, caron-->
+        <xsl:output-character character="&Ccaron;" string="&#x10C;"/> <!--capital C, caron-->
+        <xsl:output-character character="&ccirc;" string="&#x109;"/> <!--small c, circumflex accent-->
+        <xsl:output-character character="&Ccirc;" string="&#x108;"/> <!--capital C, circumflex accent-->
+        <xsl:output-character character="&cdot;" string="&#x10B;"/> <!--small c, dot above-->
+        <xsl:output-character character="&Cdot;" string="&#x10A;"/> <!--capital C, dot above-->
+        <xsl:output-character character="&dcaron;" string="&#x10F;"/> <!--small d, caron-->
+        <xsl:output-character character="&Dcaron;" string="&#x10E;"/> <!--capital D, caron-->
+        <xsl:output-character character="&dstrok;" string="&#x111;"/> <!--small d, stroke-->
+        <xsl:output-character character="&Dstrok;" string="&#x110;"/> <!--capital D, stroke-->
+        <xsl:output-character character="&ecaron;" string="&#x11B;"/> <!--small e, caron-->
+        <xsl:output-character character="&Ecaron;" string="&#x11A;"/> <!--capital E, caron-->
+        <xsl:output-character character="&edot;" string="&#x117;"/> <!--small e, dot above-->
+        <xsl:output-character character="&Edot;" string="&#x116;"/> <!--capital E, dot above-->
+        <xsl:output-character character="&emacr;" string="&#x113;"/> <!--small e, macron-->
+        <xsl:output-character character="&Emacr;" string="&#x112;"/> <!--capital E, macron-->
+        <xsl:output-character character="&eogon;" string="&#x119;"/> <!--small e, ogonek-->
+        <xsl:output-character character="&Eogon;" string="&#x118;"/> <!--capital E, ogonek-->
+        <xsl:output-character character="&gacute;" string="&#x1F5;"/> <!--small g, acute accent-->
+        <xsl:output-character character="&gbreve;" string="&#x11F;"/> <!--small g, breve-->
+        <xsl:output-character character="&Gbreve;" string="&#x11E;"/> <!--capital G, breve-->
+        <xsl:output-character character="&Gcedil;" string="&#x122;"/> <!--capital G, cedilla-->
+        <xsl:output-character character="&gcirc;" string="&#x11D;"/> <!--small g, circumflex accent-->
+        <xsl:output-character character="&Gcirc;" string="&#x11C;"/> <!--capital G, circumflex accent-->
+        <xsl:output-character character="&gdot;" string="&#x121;"/> <!--small g, dot above-->
+        <xsl:output-character character="&Gdot;" string="&#x120;"/> <!--capital G, dot above-->
+        <xsl:output-character character="&hcirc;" string="&#x125;"/> <!--small h, circumflex accent-->
+        <xsl:output-character character="&Hcirc;" string="&#x124;"/> <!--capital H, circumflex accent-->
+        <xsl:output-character character="&hstrok;" string="&#x127;"/> <!--small h, stroke-->
+        <xsl:output-character character="&Hstrok;" string="&#x126;"/> <!--capital H, stroke-->
+        <xsl:output-character character="&Idot;" string="&#x130;"/> <!--capital I, dot above-->
+        <xsl:output-character character="&Imacr;" string="&#x12A;"/> <!--capital I, macron-->
+        <xsl:output-character character="&imacr;" string="&#x12B;"/> <!--small i, macron-->
+        <xsl:output-character character="&ijlig;" string="&#x133;"/> <!--small ij ligature-->
+        <xsl:output-character character="&IJlig;" string="&#x132;"/> <!--capital IJ ligature-->
+        <xsl:output-character character="&inodot;" string="&#x131;"/> <!--small i without dot-->
+        <xsl:output-character character="&iogon;" string="&#x12F;"/> <!--small i, ogonek-->
+        <xsl:output-character character="&Iogon;" string="&#x12E;"/> <!--capital I, ogonek-->
+        <xsl:output-character character="&itilde;" string="&#x129;"/> <!--small i, tilde-->
+        <xsl:output-character character="&Itilde;" string="&#x128;"/> <!--capital I, tilde-->
+        <xsl:output-character character="&jcirc;" string="&#x135;"/> <!--small j, circumflex accent-->
+        <xsl:output-character character="&Jcirc;" string="&#x134;"/> <!--capital J, circumflex accent-->
+        <xsl:output-character character="&kcedil;" string="&#x137;"/> <!--small k, cedilla-->
+        <xsl:output-character character="&Kcedil;" string="&#x136;"/> <!--capital K, cedilla-->
+        <xsl:output-character character="&kgreen;" string="&#x138;"/> <!--small k, Greenlandic-->
+        <xsl:output-character character="&lacute;" string="&#x13A;"/> <!--small l, acute accent-->
+        <xsl:output-character character="&Lacute;" string="&#x139;"/> <!--capital L, acute accent-->
+        <xsl:output-character character="&lcaron;" string="&#x13E;"/> <!--small l, caron-->
+        <xsl:output-character character="&Lcaron;" string="&#x13D;"/> <!--capital L, caron-->
+        <xsl:output-character character="&lcedil;" string="&#x13C;"/> <!--small l, cedilla-->
+        <xsl:output-character character="&Lcedil;" string="&#x13B;"/> <!--capital L, cedilla-->
+        <xsl:output-character character="&lmidot;" string="&#x140;"/> <!--small l, middle dot-->
+        <xsl:output-character character="&Lmidot;" string="&#x139;"/> <!--capital L, middle dot-->
+        <xsl:output-character character="&lstrok;" string="&#x142;"/> <!--small l, stroke-->
+        <xsl:output-character character="&Lstrok;" string="&#x141;"/> <!--capital L, stroke-->
+        <xsl:output-character character="&nacute;" string="&#x144;"/> <!--small n, acute accent-->
+        <xsl:output-character character="&Nacute;" string="&#x143;"/> <!--capital N, acute accent-->
+        <xsl:output-character character="&eng;" string="&#x14B;"/> <!--small eng, Lapp-->
+        <xsl:output-character character="&ENG;" string="&#x14A;"/> <!--capital ENG, Lapp-->
+        <xsl:output-character character="&napos;" string="&#x149;"/> <!--small n, apostrophe-->
+        <xsl:output-character character="&ncaron;" string="&#x148;"/> <!--small n, caron-->
+        <xsl:output-character character="&Ncaron;" string="&#x147;"/> <!--capital N, caron-->
+        <xsl:output-character character="&ncedil;" string="&#x146;"/> <!--small n, cedilla-->
+        <xsl:output-character character="&Ncedil;" string="&#x145;"/> <!--capital N, cedilla-->
+        <xsl:output-character character="&odblac;" string="&#x151;"/> <!--small o, double acute accent-->
+        <xsl:output-character character="&Odblac;" string="&#x150;"/> <!--capital O, double acute accent-->
+        <xsl:output-character character="&Omacr;" string="&#x14C;"/> <!--capital O, macron-->
+        <xsl:output-character character="&omacr;" string="&#x14D;"/> <!--small o, macron-->
+        <xsl:output-character character="&oelig;" string="&#x153;"/> <!--small oe ligature-->
+        <xsl:output-character character="&OElig;" string="&#x152;"/> <!--capital OE ligature-->
+        <xsl:output-character character="&racute;" string="&#x155;"/> <!--small r, acute accent-->
+        <xsl:output-character character="&Racute;" string="&#x154;"/> <!--capital R, acute accent-->
+        <xsl:output-character character="&rcaron;" string="&#x159;"/> <!--small r, caron-->
+        <xsl:output-character character="&Rcaron;" string="&#x158;"/> <!--capital R, caron-->
+        <xsl:output-character character="&rcedil;" string="&#x157;"/> <!--small r, cedilla-->
+        <xsl:output-character character="&Rcedil;" string="&#x156;"/> <!--capital R, cedilla-->
+        <xsl:output-character character="&sacute;" string="&#x15B;"/> <!--small s, acute accent-->
+        <xsl:output-character character="&Sacute;" string="&#x158;"/> <!--capital S, acute accent-->
+        <xsl:output-character character="&scaron;" string="&#x161;"/> <!--small s, caron-->
+        <xsl:output-character character="&Scaron;" string="&#x160;"/> <!--capital S, caron-->
+        <xsl:output-character character="&scedil;" string="&#x15F;"/> <!--small s, cedilla-->
+        <xsl:output-character character="&Scedil;" string="&#x15E;"/> <!--capital S, cedilla-->
+        <xsl:output-character character="&scirc;" string="&#x15C;"/> <!--small s, circumflex accent-->
+        <xsl:output-character character="&Scirc;" string="&#x15D;"/> <!--capital S, circumflex accent-->
+        <xsl:output-character character="&tcaron;" string="&#x165;"/> <!--small t, caron-->
+        <xsl:output-character character="&Tcaron;" string="&#x164;"/> <!--capital T, caron-->
+        <xsl:output-character character="&tcedil;" string="&#x162;"/> <!--small t, cedilla-->
+        <xsl:output-character character="&Tcedil;" string="&#x163;"/> <!--capital T, cedilla-->
+        <xsl:output-character character="&tstrok;" string="&#x167;"/> <!--small t, stroke-->
+        <xsl:output-character character="&Tstrok;" string="&#x166;"/> <!--capital T, stroke-->
+        <xsl:output-character character="&ubreve;" string="&#x16D;"/> <!--small u, breve-->
+        <xsl:output-character character="&Ubreve;" string="&#x16C;"/> <!--capital U, breve-->
+        <xsl:output-character character="&udblac;" string="&#x171;"/> <!--small u, double acute accent-->
+        <xsl:output-character character="&Udblac;" string="&#x170;"/> <!--capital U, double acute accent-->
+        <xsl:output-character character="&umacr;" string="&#x16B;"/> <!--small u, macron-->
+        <xsl:output-character character="&Umacr;" string="&#x16A;"/> <!--capital U, macron-->
+        <xsl:output-character character="&uogon;" string="&#x173;"/> <!--small u, ogonek-->
+        <xsl:output-character character="&Uogon;" string="&#x172;"/> <!--capital U, ogonek-->
+        <xsl:output-character character="&uring;" string="&#x16F;"/> <!--small u, ring-->
+        <xsl:output-character character="&Uring;" string="&#x16E;"/> <!--capital U, ring-->
+        <xsl:output-character character="&utilde;" string="&#x169;"/> <!--small u, tilde-->
+        <xsl:output-character character="&Utilde;" string="&#x168;"/> <!--capital U, tilde-->
+        <xsl:output-character character="&wcirc;" string="&#x175;"/> <!--small w, circumflex accent-->
+        <xsl:output-character character="&Wcirc;" string="&#x174;"/> <!--capital W, circumflex accent-->
+        <xsl:output-character character="&ycirc;" string="&#x177;"/> <!--small y, circumflex accent-->
+        <xsl:output-character character="&Ycirc;" string="&#x176;"/> <!--capital Y, circumflex accent-->
+        <xsl:output-character character="&Yuml;" string="&#x178;"/> <!--capital Y, dieresis or umlaut mark-->
+        <xsl:output-character character="&zacute;" string="&#x17A;"/> <!--small z, acute accent-->
+        <xsl:output-character character="&Zacute;" string="&#x179;"/> <!--capital Z, acute accent-->
+        <xsl:output-character character="&zcaron;" string="&#x17E;"/> <!--small z, caron-->
+        <xsl:output-character character="&Zcaron;" string="&#x17D;"/> <!--capital Z, caron-->
+        <xsl:output-character character="&zdot;" string="&#x17C;"/> <!--small z, dot above-->
+        <xsl:output-character character="&Zdot;" string="&#x17B;"/> <!--capital Z, dot above-->
+
+        <xsl:output-character character="&hal;" string="&#189;"/> <!--fraction one-half-->
+        <xsl:output-character character="&frac12;" string="&#189;"/> <!--fraction one-half-->
+        <xsl:output-character character="&frac14;" string="&#188;"/> <!--fraction one-quarter-->
+        <xsl:output-character character="&frac34;" string="&#190;"/> <!--fraction three-quarters-->
+        <xsl:output-character character="&frac18;" string="&#x215B;"/> <!--fraction one-eighth-->     <!-- or;" string="&#xB1;&#x202;&#x2044;&#x2088;" --> 
+        <xsl:output-character character="&frac38;" string="&#x215C;"/> <!--fraction three-eighths-->  <!-- or;" string="&#xB3;&#x2044;&#x2088;" -->
+        <xsl:output-character character="&frac58;" string="&#x215D;"/> <!--fraction five-eighths-->   <!-- or;" string="&#x2075;&#x2044;&#x2088;" -->
+        <xsl:output-character character="&frac78;" string="&#x215E;"/> <!--fraction seven-eighths-->  <!-- or;" string="&#x2077;&#x2044;&#x2088;" -->
+
+        <xsl:output-character character="&sup1;" string="&#185;"/> <!--superscript one-->
+        <xsl:output-character character="&sup2;" string="&#178;"/> <!--superscript two-->
+        <xsl:output-character character="&sup3;" string="&#179;"/> <!--superscript three-->
+
+        <xsl:output-character character="&plus;" string="+"/> <!--plus sign B:-->
+        <xsl:output-character character="&plusmn;" string="&#xB1;"/> <!--/pm B: plus-or-minus sign-->
+        <xsl:output-character character="&equals;" string="="/> <!--equals sign R:-->
+        <xsl:output-character character="&gt;" string=">"/> <!--greater-than sign R:-->
+        <xsl:output-character character="&divide;" string="&#247;"/> <!--/div B: divide sign-->
+        <xsl:output-character character="&times;" string="&#215;"/> <!--/times B: multiply sign-->
+
+        <xsl:output-character character="&curren;" string="&#164;"/> <!--general currency sign-->
+        <xsl:output-character character="&pound;" string="&#163;"/> <!--pound sign-->
+        <xsl:output-character character="&dollar;" string="$"/> <!--dollar sign-->
+        <xsl:output-character character="&cent;" string="&#162;"/> <!--cent sign-->
+        <xsl:output-character character="&yen;" string="&#165;"/> <!--/yen yen sign-->
+
+        <xsl:output-character character="&num;" string="#"/> <!--number sign-->
+        <xsl:output-character character="&percnt;" string="&#37;"/> <!--percent sign-->
+        <xsl:output-character character="&ast;" string="*"/> <!--/ast B: asterisk-->
+        <xsl:output-character character="&commat;" string="@"/> <!--commercial at-->
+        <xsl:output-character character="&lsqb;" string="["/> <!--/lbrack O: left square bracket-->
+        <xsl:output-character character="&bsol;" string="\"/> <!--/backslash reverse solidus-->
+        <xsl:output-character character="&rsqb;" string="]"/> <!--/rbrack C: right square bracket-->
+        <xsl:output-character character="&lcub;" string="{"/> <!--/lbrace O: left curly bracket-->
+        <xsl:output-character character="&horbar;" string="&#x2015;"/> <!--horizontal bar-->
+        <xsl:output-character character="&verbar;" string="|"/> <!--/vert vertical bar-->
+        <xsl:output-character character="&rcub;" string="}"/> <!--/rbrace C: right curly bracket-->
+        <xsl:output-character character="&micro;" string="&#181;"/> <!--micro sign-->
+        <xsl:output-character character="&ohm;" string="&#2126;"/> <!--ohm sign-->
+        <xsl:output-character character="&deg;" string="&#176;"/> <!--degree sign-->
+        <xsl:output-character character="&ordm;" string="&#186;"/> <!--ordinal indicator, masculine-->
+        <xsl:output-character character="&ordf;" string="&#170;"/> <!--ordinal indicator, feminine-->
+        <xsl:output-character character="&sect;" string="&#167;"/> <!--section sign-->
+        <xsl:output-character character="&para;" string="&#182;"/> <!--pilcrow (paragraph sign)-->
+        <xsl:output-character character="&middot;" string="&#183;"/> <!--/centerdot B: middle dot-->
+        <xsl:output-character character="&larr;" string="&#x2190;"/> <!--/leftarrow /gets A: leftward arrow-->
+        <xsl:output-character character="&rarr;" string="&#x2192;"/> <!--/rightarrow /to A: rightward arrow-->
+        <xsl:output-character character="&uarr;" string="&#x2191;"/> <!--/uparrow A: upward arrow-->
+        <xsl:output-character character="&darr;" string="&#x2193;"/> <!--/downarrow A: downward arrow-->
+        <xsl:output-character character="&copy;" string="&#169;"/> <!--copyright sign-->
+        <xsl:output-character character="&reg;" string="&#174;"/> <!--/circledR registered sign-->
+        <xsl:output-character character="&trade;" string="&#8482;"/> <!--trade mark sign-->
+        <xsl:output-character character="&brvbar;" string="&#xA6;"/> <!--bren (vertical) bar-->
+        <xsl:output-character character="&not;" string="&#xAC;"/> <!--/neg /lnot not sign-->
+        <xsl:output-character character="&sung;" string="&#x266A;"/> <!--music note (sung text sign)-->
+
+        <xsl:output-character character="&excl;" string="!"/> <!--exclamation mark-->
+        <xsl:output-character character="&iexcl;" string="&#xA1;"/> <!--inverted exclamation mark-->
+        <xsl:output-character character="&quot;" string='"'/> <!--quotation mark-->
+        <xsl:output-character character="&apos;" string="'"/> <!--apostrophe-->
+        <xsl:output-character character="&lpar;" string="("/> <!--O: left parenthesis-->
+        <xsl:output-character character="&rpar;" string=")"/> <!--C: right parenthesis-->
+        <xsl:output-character character="&comma;" string=","/> <!--P: comma-->
+        <xsl:output-character character="&lowbar;" string="_"/> <!--low line-->
+        <xsl:output-character character="&hyphen;" string="&#x2010;"/> <!--hyphen-->
+        <xsl:output-character character="&period;" string="."/> <!--full stop, period-->
+        <xsl:output-character character="&sol;" string="/"/> <!--solidus-->
+        <xsl:output-character character="&colon;" string=":"/> <!--/colon P:-->
+        <xsl:output-character character="&semi;" string=";"/> <!--semicolon P:-->
+        <xsl:output-character character="&quest;" string="?"/> <!--question mark-->
+        <xsl:output-character character="&iquest;" string="&#xBF;"/> <!--inverted question mark-->
+        <xsl:output-character character="&laquo;" string="&#x2039;"/> <!--angle quotation mark, left   But note = that Unicode 1 & Maler & el Andaloussi give &#xAB; -->
+        <xsl:output-character character="&raquo;" string="&#x203A;"/> <!--angle quotation mark, right  But note = that Unicode 1 & Maler & el Andaloussi give &#xBB; -->
+        <xsl:output-character character="&lsquo;" string="&#x2018;"/> <!--single quotation mark, left-->
+        <xsl:output-character character="&rsquo;" string="&#x2019;"/> <!--single quotation mark, right-->
+        <xsl:output-character character="&ldquo;" string="&#x201C;"/> <!--double quotation mark, left-->
+        <xsl:output-character character="&rdquo;" string="&#x201D;"/> <!--double quotation mark, right-->
+        <xsl:output-character character="&rdquo;" string="&#8221;"/> <!--double quotation mark, right-->
+        <xsl:output-character character="&nbsp;" string="&#160;"/> <!--no break (required) space-->
+        <xsl:output-character character="&shy;" string="&#173;"/> <!--soft hyphen-->
+
+        <xsl:output-character character="&emsp;" string="&#x2003;"/> <!--em space-->
+        <xsl:output-character character="&ensp;" string="&#x2002;"/> <!--en space (1/2-em)-->
+        <xsl:output-character character="&emsp13;" string="&#x2004;"/> <!--1/3-em space-->
+        <xsl:output-character character="&emsp14;" string="&#x2005;"/> <!--1/4-em space-->
+        <xsl:output-character character="&numsp;" string="&#x2007;"/> <!--digit space (width of a number)-->
+        <xsl:output-character character="&puncsp;" string="&#x2008;"/> <!--punctuation space (width of comma)-->
+        <xsl:output-character character="&thinsp;" string="&#x2009;"/> <!--thin space (1/6-em)-->
+        <xsl:output-character character="&hairsp;" string="&#x200A;"/> <!--hair space-->
+        <xsl:output-character character="&mdash;" string="&#x2014;"/> <!--em dash-->
+        <xsl:output-character character="&ndash;" string="&#x2013;"/> <!--en dash-->
+        <xsl:output-character character="&dash;" string="&#x2010;"/> <!--hyphen (true graphic)-->
+        <xsl:output-character character="&blank;" string="&#x2423;"/> <!--significant blank symbol-->
+        <xsl:output-character character="&hellip;" string="&#x2026;"/> <!--ellipsis (horizontal)-->
+        <xsl:output-character character="&nldr;" string="&#x2025;"/> <!--double baseline dot (en leader)-->
+        <xsl:output-character character="&frac13;" string="&#x2153;"/> <!--fraction one-third-->
+        <xsl:output-character character="&frac23;" string="&#x2154;"/> <!--fraction two-thirds-->
+        <xsl:output-character character="&frac15;" string="&#x2155;"/> <!--fraction one-fifth-->
+        <xsl:output-character character="&frac25;" string="&#x2156;"/> <!--fraction two-fifths-->
+        <xsl:output-character character="&frac35;" string="&#x2157;"/> <!--fraction three-fifths-->
+        <xsl:output-character character="&frac45;" string="&#x2158;"/> <!--fraction four-fifths-->
+        <xsl:output-character character="&frac16;" string="&#x2159;"/> <!--fraction one-sixth-->
+        <xsl:output-character character="&frac56;" string="&#x215a;"/> <!--fraction five-sixths-->
+        <xsl:output-character character="&incare;" string="&#x2105;"/> <!--in-care-of symbol-->
+        <xsl:output-character character="&block;" string="&#x2588;"/> <!--full block-->
+        <xsl:output-character character="&uhblk;" string="&#x2580;"/> <!--upper half block-->
+        <xsl:output-character character="&lhblk;" string="&#x2584;"/> <!--lower half block-->
+        <xsl:output-character character="&blk14;" string="&#x2591;"/> <!--25% shaded block-->
+        <xsl:output-character character="&blk12;" string="&#x2592;"/> <!--50% shaded block-->
+        <xsl:output-character character="&blk34;" string="&#x2593;"/> <!--75% shaded block-->
+        <xsl:output-character character="&marker;" string="&#x25AE;"/> <!--histogram marker-->
+        <xsl:output-character character="&cir;" string="&#x25CB;"/> <!--/circ B: circle, open-->
+        <xsl:output-character character="&squ;" string="&#x25A1;"/> <!--square, open-->
+        <xsl:output-character character="&rect;" string="&#x25AD;"/> <!--rectangle, open-->
+        <xsl:output-character character="&utri;" string="&#x25B5;"/> <!--/triangle up triangle, open-->
+        <xsl:output-character character="&dtri;" string="&#x25BF;"/> <!--/triangledown down triangle, open-->
+        <xsl:output-character character="&star;" string="&#x2606;"/> <!--star, open-->
+        <xsl:output-character character="&bull;" string="&#x2022;"/> <!--/bullet B: round bullet, filled-->
+        <xsl:output-character character="&squf;" string="&#x25AA;"/> <!--/blacksquare sq bullet, filled-->
+        <xsl:output-character character="&utrif;" string="&#x25B4;"/> <!--/blacktriangle up tri, filled-->
+        <xsl:output-character character="&dtrif;" string="&#x25BE;"/> <!--/blacktriangledown dn tri, filled-->
+        <xsl:output-character character="&ltrif;" string="&#x25C2;"/> <!--/blacktriangleleft R: l tri, filled-->
+        <xsl:output-character character="&rtrif;" string="&#x25B8;"/> <!--/blacktriangleright R: r tri, filled-->
+        <xsl:output-character character="&clubs;" string="&#x2663;"/> <!--/clubsuit club suit symbol-->
+        <xsl:output-character character="&diams;" string="&#x2662;"/> <!--/diamondsuit diamond suit symbol-->
+        <xsl:output-character character="&hearts;" string="&#x2661;"/> <!--/heartsuit heart suit symbol-->
+        <xsl:output-character character="&spades;" string="&#x2660;"/> <!--/spadesuit spades suit symbol-->
+        <xsl:output-character character="&malt;" string="&#x2720;"/> <!--/maltese maltese cross-->
+        <xsl:output-character character="&dagger;" string="&#x2020;"/> <!--/dagger B: dagger-->
+        <xsl:output-character character="&Dagger;" string="&#x2021;"/> <!--/ddagger B: double dagger-->
+        <xsl:output-character character="&check;" string="&#x2713;"/> <!--/checkmark tick, check mark-->
+        <xsl:output-character character="&cross;" string="&#x2717;"/> <!--ballot cross-->
+        <xsl:output-character character="&sharp;" string="&#x266F;"/> <!--/sharp musical sharp-->
+        <xsl:output-character character="&flat;" string="&#x266D;"/> <!--/flat musical flat-->
+        <xsl:output-character character="&male;" string="&#x2642;"/> <!--male symbol-->
+        <xsl:output-character character="&female;" string="&#x2640;"/> <!--female symbol-->
+        <xsl:output-character character="&phone;" string="&#x260E;"/> <!--telephone symbol-->
+        <xsl:output-character character="&telrec;" string="&#x2315;"/> <!--telephone recorder symbol-->
+        <xsl:output-character character="&copysr;" string="&#x2117;"/> <!--sound recording copyright sign-->
+        <xsl:output-character character="&caret;" string="&#x2041;"/> <!--caret (insertion mark)-->
+        <xsl:output-character character="&lsquor;" string="&#x201A;"/> <!--rising single quote, left (low)-->
+        <xsl:output-character character="&ldquor;" string="&#x201E;"/> <!--rising dbl quote, left (low)-->
+
+        <xsl:output-character character="&fflig;" string="&#xFB00;"/> <!--small ff ligature-->
+        <xsl:output-character character="&filig;" string="&#xFB01;"/> <!--small fi ligature-->
+        <!--<xsl:output-character character="&fjlig;" string="fj"/>--> <!--small fj ligature-->
+        <xsl:output-character character="&ffilig;" string="&#xFB03;"/> <!--small ffi ligature-->
+        <xsl:output-character character="&ffllig;" string="&#xFB04;"/> <!--small ffl ligature-->
+        <xsl:output-character character="&fllig;" string="&#xFB02;"/> <!--small fl ligature-->
+
+        <xsl:output-character character="&mldr;" string="&#x2025;"/> <!--em leader-->
+        <xsl:output-character character="&rdquor;" string="&#x201D;"/> <!--rising dbl quote, right (high)-->
+        <xsl:output-character character="&rsquor;" string="&#x2019;"/> <!--rising single quote, right (high)-->
+        <xsl:output-character character="&vellip;" string="&#x22EE;"/> <!--vertical ellipsis-->
+
+        <xsl:output-character character="&hybull;" string="&#x2043;"/> <!--rectangle, filled (hyphen bullet)-->
+        <xsl:output-character character="&loz;" string="&#x25CA;"/> <!--lozenge - lozenge or total mark-->
+        <xsl:output-character character="&lozf;" string="&#x2726;"/> <!--blacklozenge - lozenge, filled-->
+        <xsl:output-character character="&ltri;" string="&#x25C3;"/> <!--/triangleleft B: l triangle, open-->
+        <xsl:output-character character="&rtri;" string="&#x25B9;"/> <!--/triangleright B: r triangle, open-->
+        <xsl:output-character character="&starf;" string="&#x2605;"/> <!--/bigstar - star, filled-->
+
+        <xsl:output-character character="&natur;" string="&#x266E;"/> <!--/natural - music natural-->
+        <xsl:output-character character="&rx;" string="&#x211E;"/> <!--pharmaceutical prescription (Rx)-->
+        <xsl:output-character character="&sext;" string="&#x2736;"/> <!--sextile (6-pointed star)-->
+
+        <xsl:output-character character="&target;" string="&#x2316;"/> <!--register mark or target-->
+        <xsl:output-character character="&dlcrop;" string="&#x230D;"/> <!--downward left crop mark -->
+        <xsl:output-character character="&drcrop;" string="&#x230C;"/> <!--downward right crop mark -->
+        <xsl:output-character character="&ulcrop;" string="&#x230F;"/> <!--upward left crop mark -->
+        <xsl:output-character character="&urcrop;" string="&#x230E;"/> <!--upward right crop mark -->
+
+        <xsl:output-character character="&aleph;" string="&#x2135;"/> <!--/aleph aleph, Hebrew-->
+        <xsl:output-character character="&and;" string="&#x2227;"/> <!--/wedge /land B: logical and-->
+        <xsl:output-character character="&ang90;" string="&#x221F;"/> <!--right (90 degree) angle-->
+        <xsl:output-character character="&angsph;" string="&#x2222;"/> <!--/sphericalangle angle-spherical-->
+        <xsl:output-character character="&ap;" string="&#x2245;"/> <!--/approx R: approximate-->
+        <xsl:output-character character="&becaus;" string="&#x2235;"/> <!--/because R: because-->
+        <xsl:output-character character="&bottom;" string="&#x22A5;"/> <!--/bot B: perpendicular-->
+        <xsl:output-character character="&cap;" string="&#x2229;"/> <!--/cap B: intersection-->
+        <xsl:output-character character="&cong;" string="&#x2245;"/> <!--/cong R: congruent with-->
+        <xsl:output-character character="&conint;" string="&#x222E;"/> <!--/oint L: contour integral operator-->
+        <xsl:output-character character="&cup;" string="&#x222A;"/> <!--/cup B: union or logical sum-->
+        <xsl:output-character character="&equiv;" string="&#x2261;"/> <!--/equiv R: identical with-->
+        <xsl:output-character character="&exist;" string="&#x2203;"/> <!--/exists at least one exists-->
+        <xsl:output-character character="&forall;" string="&#x2200;"/> <!--/forall for all-->
+        <xsl:output-character character="&fnof;" string="&#x192;"/> <!--function of (italic small f)-->
+        <xsl:output-character character="&ge;" string="&#x2265;"/> <!--/geq /ge R: greater-than-or-equal-->
+        <xsl:output-character character="&iff;" string="&#x21D4;"/> <!--/iff if and only if-->
+        <xsl:output-character character="&infin;" string="&#x221E;"/> <!--/infty infinity-->
+        <xsl:output-character character="&int;" string="&#x222B;"/> <!--/int L: integral operator-->
+        <xsl:output-character character="&isin;" string="&#x2208;"/> <!--/in R: set membership-->
+        <xsl:output-character character="&lang;" string="&#x3008;"/> <!--/langle O: left angle bracket-->
+        <xsl:output-character character="&lArr;" string="&#x21D0;"/> <!--/Leftarrow A: is implied by-->
+        <xsl:output-character character="&le;" string="&#x2264;"/> <!--/leq /le R: less-than-or-equal-->
+        <xsl:output-character character="&minus;" string="-"/> <!--B: minus sign-->
+        <xsl:output-character character="&mnplus;" string="&#x2213;"/> <!--/mp B: minus-or-plus sign-->
+        <xsl:output-character character="&nabla;" string="&#x2207;"/> <!--/nabla del, Hamilton operator-->
+        <xsl:output-character character="&ne;" string="&#x2260;"/> <!--/ne /neq R: not equal-->
+        <xsl:output-character character="&ni;" string="&#x220B;"/> <!--/ni /owns R: contains-->
+        <xsl:output-character character="&or;" string="&#x2228;"/> <!--/vee /lor B: logical or-->
+        <xsl:output-character character="&par;" string="&#x2225;"/> <!--/parallel R: parallel-->
+        <xsl:output-character character="&part;" string="&#x2202;"/> <!--/partial partial differential-->
+        <xsl:output-character character="&permil;" string="&#x2030;"/> <!--per thousand-->
+        <xsl:output-character character="&perp;" string="&#x22A5;"/> <!--/perp R: perpendicular-->
+        <xsl:output-character character="&prime;" string="&#x2032;"/> <!--/prime prime or minute-->
+        <xsl:output-character character="&Prime;" string="&#x2033;"/> <!--double prime or second-->
+        <xsl:output-character character="&prop;" string="&#x221D;"/> <!--/propto R: is proportional to-->
+        <xsl:output-character character="&radic;" string="&#x221A;"/> <!--/surd radical-->
+        <xsl:output-character character="&rang;" string="&#x3009;"/> <!--/rangle C: right angle bracket-->
+        <xsl:output-character character="&rArr;" string="&#x21D2;"/> <!--/Rightarrow A: implies-->
+        <xsl:output-character character="&sim;" string="&#x223C;"/> <!--/sim R: similar-->
+        <xsl:output-character character="&sime;" string="&#x2243;"/> <!--/simeq R: similar, equals-->
+        <xsl:output-character character="&square;" string="&#x25A1;"/> <!--/square B: square-->
+        <xsl:output-character character="&sub;" string="&#x2282;"/> <!--/subset R: subset or is implied by-->
+        <xsl:output-character character="&sube;" string="&#x2286;"/> <!--/subseteq R: subset, equals-->
+        <xsl:output-character character="&sup;" string="&#x2283;"/> <!--/supset R: superset or implies-->
+        <xsl:output-character character="&supe;" string="&#x2287;"/> <!--/supseteq R: superset, equals-->
+        <xsl:output-character character="&there4;" string="&#x2234;"/> <!--/therefore R: therefore-->
+        <xsl:output-character character="&Verbar;" string="&#x2016;"/> <!--/Vert dbl vertical bar-->
+
+        <xsl:output-character character="&angst;" string="&#x212B;"/> <!--Angstrom capital A, ring-->
+        <xsl:output-character character="&bernou;" string="&#x212C;"/> <!--Bernoulli function (script capital B)-->
+        <xsl:output-character character="&compfn;" string="&#x2218;"/> <!--B: composite function (small circle)-->
+        <xsl:output-character character="&Dot;" string="&#xA8;"/> <!--dieresis or umlaut mark-->
+        <xsl:output-character character="&DotDot;" string="&#x20DC;"/> <!--four dots above-->
+        <xsl:output-character character="&hamilt;" string="&#x210B;"/> <!--Hamiltonian (script capital H)-->
+        <xsl:output-character character="&lagran;" string="&#x2112;"/> <!--Lagrangian (script capital L)-->
+        <xsl:output-character character="&lowast;" string="&#x2217;"/> <!--low asterisk-->
+        <xsl:output-character character="&notin;" string="&#x2209;"/> <!--N: negated set membership-->
+        <xsl:output-character character="&order;" string="&#x2134;"/> <!--order of (script small o)-->
+        <xsl:output-character character="&phmmat;" string="&#x2133;"/> <!--physics M-matrix (script capital M)-->
+        <xsl:output-character character="&tdot;" string="&#x20DB;"/> <!--three dots above-->
+        <xsl:output-character character="&tprime;" string="&#x2034;"/> <!--triple prime-->
+        <xsl:output-character character="&wedgeq;" string="&#x2259;"/> <!--R: corresponds to (wedge,
+            equals)-->
+            
+        </xsl:character-map>
+    
+</xsl:stylesheet>
