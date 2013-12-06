@@ -1,4 +1,4 @@
 Archive-It-stylesheets
 ======================
 
-XSLT stylesheets for working with metadata in Archive-It.
+This repository includes XSLT stylesheets for metadata export and ingest into the Archive-It web archiving platform.
