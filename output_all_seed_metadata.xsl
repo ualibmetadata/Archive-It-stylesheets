@@ -7,14 +7,34 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl">
-    
-    <!-- V.04: November 2013. Bibliographic Services, University of Alberta Libraries -->
-    <!-- Extracts all *seed* metadata from Archive-It feed -->
-    <!-- Outputs data as delimiter-separated values text file -->
+    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl">    
     
     <xsl:import href="variables.xsl"/>
     <xsl:import href="character_map.xsl"/>
+    
+    <xd:doc scope="stylesheet">
+        <xd:desc>
+            <xd:p>Extracts all *seed* metadata from Archive-It feed. Outputs data as
+                delimiter-separated (tab-separated) values text file. Result file can be imported as
+                spreadsheet for metadata editing and imported into AI to replace or add to existing
+                web archive metadata. Stylesheet can be easily modified to extract *document*
+                data.</xd:p>
+            <xd:p><xd:b>First version created on:</xd:b> June 2013</xd:p>
+            <xd:p><xd:b>Author:</xd:b>Mariana Paredes-Olea, Bibloiographic Services, University of
+                Alberta Libraries.</xd:p>
+            <xd:p><xd:b>Future work:</xd:b>
+                <xd:ul>
+                    <xd:li>improve character entities and unicode symbols output,</xd:li>
+                    <xd:li>enhance character map with decimal and hexadecimal character codes for
+                        conversion,</xd:li>
+                    <xd:li>stylesheets documentation,</xd:li>
+                    <xd:li>documentation of workflow (steps to use stylesheets),</xd:li>
+                    <xd:li>delimiters are currently printed manually, this should be changed to
+                        improve flexibility of templates.</xd:li>
+                </xd:ul>
+            </xd:p>
+        </xd:desc>
+    </xd:doc>
     
     <xsl:output method="text" use-character-maps="entities" />
     
