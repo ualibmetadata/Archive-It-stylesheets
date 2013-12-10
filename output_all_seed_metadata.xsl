@@ -10,7 +10,7 @@
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl">    
     
     <xsl:import href="variables.xsl"/>
-    <xsl:import href="character_map.xsl"/>
+    <xsl:import href="characters/character_map.xsl"/>
     
     <xd:doc scope="stylesheet">
         <xd:desc>
