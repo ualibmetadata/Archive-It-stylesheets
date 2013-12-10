@@ -36,7 +36,7 @@
         </xd:desc>
     </xd:doc>
     
-    <xsl:output method="text" omit-xml-declaration="yes" use-character-maps="entities" />
+    <xsl:output method="text" xml:space="default" omit-xml-declaration="yes" use-character-maps="entities" />
 <!--    <xsl:output method="text" omit-xml-declaration="yes"/>-->
     
     <xsl:template match="archiveit-feed">
@@ -103,7 +103,7 @@
     <xsl:template match="title">
         <xsl:param name="title-position" select="position()"/>
         <xsl:apply-templates select="../../url" mode="content"/>
-        <xsl:value-of select="."/>
+        <xsl:value-of select="." disable-output-escaping="yes"/>
         <xsl:value-of select="$newline"/>
         <!--<xsl:choose>
             <xsl:when test="$title-position eq 1">

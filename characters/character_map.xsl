@@ -51,6 +51,7 @@
         <xsl:output-character character="&ccedil;" string="ç"   /> <!-- small c, cedilla -->
         <xsl:output-character character="&egrave;" string="è"   /> <!-- small e, grave accent -->
         <xsl:output-character character="&eacute;" string="é"   /> <!-- small e, acute accent -->
+        <xsl:output-character character="&#233;" string="é"   />
         <xsl:output-character character="&ecirc;" string="ê"   /> <!-- small e, circumflex accent -->
         <xsl:output-character character="&euml;" string="ë"   /> <!-- small e, dieresis or umlaut mark -->
         <xsl:output-character character="&iacute;" string="í"   /> <!-- small i, acute accent -->
