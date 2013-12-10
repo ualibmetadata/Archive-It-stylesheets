@@ -483,7 +483,8 @@
 <!ENTITY laquo	       "&#x2039;" > <!--angle quotation mark, left   But note = that Unicode 1 & Maler & el Andaloussi give &#xAB; -->
 <!ENTITY raquo	       "&#x203A;" > <!--angle quotation mark, right  But note = that Unicode 1 & Maler & el Andaloussi give &#xBB; -->
 <!ENTITY lsquo	       "&#x2018;" > <!--single quotation mark, left-->
-<!ENTITY rsquo	       "&#x2019;" > <!--single quotation mark, right-->
+<!ENTITY rsquo	       "&#x2019;" > <!--single quotation mark, right(hex) -->
+<!ENTITY rsquo         "&#8217;" > <!-- single quotation mark, right(dec) -->
 <!ENTITY ldquo	       "&#x201C;" > <!--double quotation mark, left-->
 <!ENTITY rdquo	       "&#x201D;" > <!--double quotation mark, right-->
 <!ENTITY rdquo	       "&#8221;" > <!--double quotation mark, right-->
@@ -499,7 +500,8 @@
 <!ENTITY thinsp	       "&#x2009;" > <!--thin space (1/6-em)-->
 <!ENTITY hairsp	       "&#x200A;" > <!--hair space-->
 <!ENTITY mdash	       "&#x2014;" > <!--em dash-->
-<!ENTITY ndash	       "&#x2013;" > <!--en dash-->
+<!ENTITY ndash	       "&#x2013;" > <!--en dash (hex)-->
+<!ENTITY ndash	       "&#8211;" > <!--en dash (dec)-->
 <!ENTITY dash	       "&#x2010;" > <!--hyphen (true graphic)-->
 <!ENTITY blank	       "&#x2423;" > <!--significant blank symbol-->
 <!ENTITY hellip	       "&#x2026;" > <!--ellipsis (horizontal)-->
