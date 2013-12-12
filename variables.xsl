@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    version="2.0">
+    version="2.0"
+    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl">
     
-    <!-- V.01: June 2013. Bibliographic Services, University of Alberta Libraries -->
-    <!-- contains common variables to be imported from OAI and AI feed stylesheets -->
+    
+    <xd:doc scope="stylesheet">
+        <xd:desc>
+            <xd:p>Ccntains common variables to be imported by OAI and AI feed stylesheets.</xd:p>
+            <xd:p><xd:b>First version created on:</xd:b> June 2013</xd:p>
+            <xd:p><xd:b>Author:</xd:b>Mariana Paredes-Olea, Bibloiographic Services, University of
+                Alberta Libraries.</xd:p>            
+        </xd:desc>
+    </xd:doc>
+
     
     <xsl:variable name="tab">
         <xsl:text>&#x09;</xsl:text>

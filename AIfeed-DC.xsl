@@ -5,20 +5,18 @@
     xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" 
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    version="2.0">
-    <!--
-        This stylesheet will transform AI Feed to Simple DC XML.
-        
-        The contents of some value standards such as IANA MIME types, ISO 3166-1, ISO 639-2, etc., 
-        have been added into the stylesheet to facilitate proper mapping 
-        of equivalent values to the proper simple DC elements.
-        
-        [1] http://www.openarchives.org/OAI/openarchivesprotocol.html#MetadataNamespaces
-        [2] http://www.loc.gov/standards/sru/record-schemas.html
-        
-        April 2013
-        paredeso@ualberta.ca
-    -->
+    version="2.0"
+    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl">
+    
+    
+   <xd:doc>
+       <xd:p><xd:b>In progress. </xd:b>Transforms AI Feed into Simple DC XML. The contents of some value standards such as
+           IANA MIME types, ISO 3166-1, ISO 639-2, etc., have been added into the stylesheet to
+           facilitate proper mapping of equivalent values to the proper simple DC elements.</xd:p>
+       <xd:p><xd:b>First version created on:</xd:b>April 2013</xd:p>
+       <xd:p><xd:b>Adapted by:</xd:b>Mariana Paredes-Olea, Bibloiographic Services, University of
+           Alberta Libraries.</xd:p>
+   </xd:doc>
     
     <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
     <xsl:include href="http://www.loc.gov/standards/mods/inc/dcmiType.xsl"/>
@@ -27,10 +25,12 @@
     <xsl:include href="http://www.loc.gov/standards/mods/inc/forms.xsl"/>
     <xsl:include href="http://www.loc.gov/standards/mods/inc/iso3166-1.xsl"/>
     <xsl:include href="http://www.loc.gov/standards/mods/inc/iso639-2.xsl"/>
+    
     <!-- Do you have a Handle server?  If so, specify the base URI below including the trailing slash a la: http://hdl.loc.gov/ -->
     <!--<xsl:variable name="handleServer">
 		<xsl:text>http://hdl.loc.gov/</xsl:text>
     </xsl:variable>-->
+    
     <xsl:template match="*[not(node())]"/> <!-- strip empty DC elements that are output by tools like ContentDM -->
     <!--<xsl:template match="/">
         <xsl:if test="sru_dc:dcCollection">

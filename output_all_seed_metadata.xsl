@@ -12,6 +12,8 @@
     <xsl:import href="variables.xsl"/>
     <xsl:import href="characters/character_map.xsl"/>
     
+    <xsl:output method="text" xml:space="default" omit-xml-declaration="yes" use-character-maps="entities" />
+    
     <xd:doc scope="stylesheet">
         <xd:desc>
             <xd:p>Extracts all *seed* metadata from Archive-It feed. Outputs data as
@@ -24,22 +26,31 @@
                 Alberta Libraries.</xd:p>
             <xd:p><xd:b>Future work:</xd:b>
                 <xd:ul>
-                    <xd:li>improve character entities and unicode symbols output,</xd:li>
+                    <xd:li>delimiters are currently processed by manual additions of
+                        characters; this should be changed to improve flexibility of templates.</xd:li>
+                    <xd:li>improve character entities and unicode symbols output</xd:li>
                     <xd:li>enhance character map with decimal and hexadecimal character codes for
-                        conversion,</xd:li>
-                    <xd:li>stylesheets documentation,</xd:li>
-                    <xd:li>documentation of workflow (steps to use stylesheets),</xd:li>
-                    <xd:li>delimiters are currently printed manually, this should be changed to
-                        improve flexibility of templates.</xd:li>
+                        conversion</xd:li>
+                    <xd:li>stylesheets documentation</xd:li>
+                    <xd:li>documentation of workflow (steps to use stylesheets)</xd:li>
+                    <xd:li>existing metadata is output in separate lines; this creates a lengthier
+                        spreadsheet but does not affect the result of the bulk import into AI and
+                        provides extra blank spaces to add values. If desired, this stylesheet can
+                        be enhanced to print all first instances of child elements into a single
+                        line, all second instances of child elements in second line, and so on
+                        (print value of [element][1], then all [element[2], element[3], etc.).</xd:li>                    
                 </xd:ul>
             </xd:p>
         </xd:desc>
     </xd:doc>
     
-    <xsl:output method="text" xml:space="default" omit-xml-declaration="yes" use-character-maps="entities" />
-<!--    <xsl:output method="text" omit-xml-declaration="yes"/>-->
     
-    <xsl:template match="archiveit-feed">
+    
+   <xsl:template match="archiveit-feed">
+       <xd:doc>
+           <xd:desc>Select seed level metadata and apply seed template, which processes seed URLs. 
+               This can be changed to process collection- or document- level metadata.</xd:desc>
+       </xd:doc>
         <xsl:value-of select="$metadata_fields"/>
         <xsl:apply-templates select="//seed"/>
     </xsl:template>
@@ -55,30 +66,23 @@
         </xsl:choose>        
     </xsl:template>
     
-    <xsl:template match="url" name="empty" mode="empty">
-        <xsl:value-of select="." disable-output-escaping="yes"/>
-        <xsl:value-of select="$newline"/>
-    </xsl:template>
-    
-    <xsl:template match="url" mode="content">
-        <xsl:value-of select="." disable-output-escaping="yes"/>
-        <xsl:value-of select="$tab"/>
-    </xsl:template>
-    
     
     <xsl:template match="metadata">
+        <xd:doc>
+            <xd:desc>Metadata template calls specific field templates.</xd:desc>
+        </xd:doc>
+        
         <!--<xsl:variable name="start">
             <xsl:value-of>1</xsl:value-of>
         </xsl:variable>-->
         <!--<xsl:variable name="position" select="child::*[position()]"/>-->
         <!--<xsl:apply-templates select="url"/>-->
-<!--        <xsl:value-of select="child::*[position()]"></xsl:value-of>-->
-<!--        <xsl:apply-templates select="title"/>-->
+        <!--<xsl:value-of select="child::*[position()]"></xsl:value-of>-->
+        <!--<xsl:apply-templates select="title"/>-->
         <!--<xsl:if test="$title-position = title[position()]">
             <xsl:value-of select="title"/>
         </xsl:if>-->
         
-<!--        <xsl:apply-templates select="url"/>-->
         <xsl:apply-templates select="title"/>
         <xsl:apply-templates select="creator"/>
         <xsl:apply-templates select="subject"/>
@@ -99,7 +103,27 @@
     </xsl:template>
     
     
+    <xsl:template match="url" name="empty" mode="empty">
+        <xd:doc>
+            <xd:desc>Selects seeds with no metadata, prints URL.</xd:desc>
+        </xd:doc>
+        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="$newline"/>
+    </xsl:template>
     
+    <xsl:template match="url" mode="content">
+        <xd:doc>
+            <xd:desc>Selects seeds existing metadata, prints URL.</xd:desc>
+        </xd:doc>
+        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="$tab"/>
+    </xsl:template>
+    
+    
+    <xd:doc>
+        <xd:desc>Field templates print resource URL followed by character-delimited metadata.
+            Character delimiters are currently printed manually. For future enhancement.</xd:desc>
+    </xd:doc>
     <xsl:template match="title">
         <xsl:param name="title-position" select="position()"/>
         <xsl:apply-templates select="../../url" mode="content"/>
