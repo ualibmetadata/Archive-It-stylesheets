@@ -45,12 +45,11 @@
     </xd:doc>
     
     
-    
-   <xsl:template match="archiveit-feed">
-       <xd:doc>
-           <xd:desc>Select seed level metadata and apply seed template, which processes seed URLs. 
-               This can be changed to process collection- or document- level metadata.</xd:desc>
-       </xd:doc>
+    <xd:doc>
+        <xd:desc>Select seed level metadata and apply seed template, which processes seed URLs. 
+            This can be changed to process collection- or document- level metadata.</xd:desc>
+    </xd:doc>
+   <xsl:template match="archiveit-feed">       
         <xsl:value-of select="$metadata_fields"/>
         <xsl:apply-templates select="//seed"/>
     </xsl:template>
@@ -67,11 +66,10 @@
     </xsl:template>
     
     
+    <xd:doc>
+        <xd:desc>Metadata template calls specific field templates.</xd:desc>
+    </xd:doc>
     <xsl:template match="metadata">
-        <xd:doc>
-            <xd:desc>Metadata template calls specific field templates.</xd:desc>
-        </xd:doc>
-        
         <!--<xsl:variable name="start">
             <xsl:value-of>1</xsl:value-of>
         </xsl:variable>-->
@@ -103,10 +101,10 @@
     </xsl:template>
     
     
+    <xd:doc>
+        <xd:desc>Selects seeds with no metadata, prints URL.</xd:desc>
+    </xd:doc>
     <xsl:template match="url" name="empty" mode="empty">
-        <xd:doc>
-            <xd:desc>Selects seeds with no metadata, prints URL.</xd:desc>
-        </xd:doc>
         <xsl:value-of select="." disable-output-escaping="yes"/>
         <xsl:value-of select="$newline"/>
     </xsl:template>
@@ -121,7 +119,7 @@
     
     
     <xd:doc>
-        <xd:desc>Field templates print resource URL followed by character-delimited metadata.
+        <xd:desc>Field templates: print resource URL followed by character-delimited metadata.
             Character delimiters are currently printed manually. For future enhancement.</xd:desc>
     </xd:doc>
     <xsl:template match="title">
