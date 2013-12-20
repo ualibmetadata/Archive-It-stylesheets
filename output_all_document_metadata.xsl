@@ -16,7 +16,7 @@
     
     <xd:doc scope="stylesheet">
         <xd:desc>
-            <xd:p>Extracts all *seed* metadata from Archive-It feed. Outputs data as
+            <xd:p>Extracts all *document-level* metadata from Archive-It feed. Outputs data as
                 delimiter-separated (tab-separated) values text file. Result file can be imported as
                 spreadsheet for metadata editing and imported into AI to replace or add to existing
                 web archive metadata. Stylesheet can be easily modified to extract *document*
@@ -42,14 +42,14 @@
     
     
     <xd:doc>
-        <xd:desc>Select seed-level metadata and apply seed template (processes seed URLs).</xd:desc>
+        <xd:desc>Select document-level metadata and apply template to processes document URLs.</xd:desc>
     </xd:doc>
    <xsl:template match="archiveit-feed">       
         <xsl:value-of select="$metadata_fields"/>
-        <xsl:apply-templates select="//seed"/>
+       <xsl:apply-templates select="//document-metadatum"/>
     </xsl:template>
     
-    <xsl:template match="//seed">
+    <xsl:template match="//document-metadatum">
         <xsl:choose>
             <xsl:when test="metadata[not(node())]">
                 <xsl:apply-templates select="url" mode="empty"/>
@@ -97,7 +97,7 @@
     
     
     <xd:doc>
-        <xd:desc>Selects seeds with no metadata, prints URLs.</xd:desc>
+        <xd:desc>Selects documents with no metadata, prints URL.</xd:desc>
     </xd:doc>
     <xsl:template match="url" name="empty" mode="empty">
         <xsl:value-of select="." disable-output-escaping="yes"/>
@@ -105,9 +105,9 @@
     </xsl:template>
     
     <xd:doc>
-        <xd:desc>Selects seeds' existing metadata, prints URLs.</xd:desc>
+        <xd:desc>Selects documents' existing metadata, prints URL.</xd:desc>
     </xd:doc>
-    <xsl:template match="url" mode="content">        
+    <xsl:template match="url" mode="content">
         <xsl:value-of select="." disable-output-escaping="yes"/>
         <xsl:value-of select="$tab"/>
     </xsl:template>
