@@ -100,7 +100,7 @@
         <xd:desc>Selects seeds with no metadata, prints URLs.</xd:desc>
     </xd:doc>
     <xsl:template match="url" name="empty" mode="empty">
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>
     </xsl:template>
     
@@ -108,7 +108,7 @@
         <xd:desc>Selects seeds' existing metadata, prints URLs.</xd:desc>
     </xd:doc>
     <xsl:template match="url" mode="content">        
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$tab"/>
     </xsl:template>
     
@@ -120,11 +120,11 @@
     <xsl:template match="title">
         <xsl:param name="title-position" select="position()"/>
         <xsl:apply-templates select="../../url" mode="content"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>
         <!--<xsl:choose>
             <xsl:when test="$title-position eq 1">
-               <xsl:value-of select="." disable-output-escaping="yes"/>                
+               <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>                
             </xsl:when>
             <xsl:otherwise></xsl:otherwise>
         </xsl:choose>-->        
@@ -135,7 +135,7 @@
         <xsl:variable name="tabnum" select="1"/>
         <xsl:apply-templates select="../../url" mode="content"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>
     </xsl:template>
     
@@ -145,7 +145,7 @@
         <xsl:apply-templates select="../../url" mode="content"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -156,7 +156,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -168,7 +168,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -181,7 +181,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -195,7 +195,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -210,7 +210,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -226,7 +226,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -243,7 +243,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>    
     </xsl:template>
     
@@ -261,7 +261,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -280,7 +280,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -300,7 +300,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -321,7 +321,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -343,7 +343,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -366,7 +366,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
@@ -390,7 +390,7 @@
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
         <xsl:value-of select="$tab"/>
-        <xsl:value-of select="." disable-output-escaping="yes"/>
+        <xsl:value-of select="." disable-output-escaping="yes" xml:space="default"/>
         <xsl:value-of select="$newline"/>        
     </xsl:template>
     
