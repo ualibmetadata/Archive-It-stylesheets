@@ -14,7 +14,7 @@ Extracts all existing metadata as tab-separated values. Useful for AI's import m
 Extract URLs and column headers with AI fields (ready to be imported from Excel or OpenOffice). Useful for AI's "add new metadata" import option.
 
 * extract_seed_URLs_from_OAI_or_AI.xsl - outputs a text file listing all seed identifiers (URLs) contained in an AI feed. Useful for AI's importing "add new metadata" import option.
-* extract_doc_URLs_from_AI.xsl - outputs a text file listing all document identifiers (URLs) contained in an AI feed. Document metadata is not available from OAI feeds, so I did not considered that when creating this spreadsheet.
+* extract_doc_URLs_from_AI.xsl - outputs a text file listing all document identifiers (URLs) contained in an AI feed. Document metadata is not available from OAI feeds, so I did not consider that when creating this stylesheet.
 Extract just URLs. Useful for AI's importing "add new metadata" import option.
 
 Supporting files:
