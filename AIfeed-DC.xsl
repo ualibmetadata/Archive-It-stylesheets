@@ -46,7 +46,9 @@
     </xsl:template>-->
     <xsl:template match="/">        
         <DescriptionSet>
-            <xsl:apply-templates select="/archiveit-feed/collections/collection"/> <!-- change if processing seeds or documents -->
+<!--            <xsl:apply-templates select="/archiveit-feed/collections/collection/document-metadata/document-metadatum"/> <!-\- for document-level metadata -\->-->
+            <xsl:apply-templates select="/archiveit-feed/collections/collection/seeds/seed"/>  <!--for seed-level metadata--> 
+            <!--<xsl:apply-templates select="/archiveit-feed/collections/collection"/>-->  <!--for collection-level metadata -->
         </DescriptionSet>
     </xsl:template>
     <!--<xsl:template match="sru_dc:dc">
@@ -66,13 +68,16 @@
 			</xsl:otherwise>
 		</xsl:choose>        
     </xsl:template>-->
-    <xsl:template match="/archiveit-feed/collections/collection"> <!-- mpo: check ual namespace -->
+<!--    <xsl:template match="/archiveit-feed/collections/collection/document-metadata/document-metadatum"> <!-\- mpo: check ual namespace -\->-->
+    <xsl:template match="/archiveit-feed/collections/collection/seeds/seed">  <!--for seed-level metadata--> 
+        <!--<xsl:template match="/archiveit-feed/collections/collection">-->  <!--for collection-level metadata -->   
         <Description
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:ual="http://ualberta.ca/ual"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://dublincore.org/schemas/xmls/simpledc20021212.xsd">
             <xsl:call-template name="dcMain"/>
+        
         </Description>
     </xsl:template>
     <xsl:template name="dcMain">
@@ -88,7 +93,11 @@
         <xsl:apply-templates select="metadata/publisher"/>
         <xsl:apply-templates select="metadata/date"/>
         <xsl:apply-templates select="metadata/format"/>
-        <xsl:apply-templates select="metadata/identifier"/>
+        <xsl:if test="self::*[contains(name(), 'seed')]">
+            <xsl:apply-templates select="url"/>
+        </xsl:if>
+        <xsl:apply-templates select="archival-url"/>
+<!--        <xsl:apply-templates select="metadata/identifier"/>-->
         <xsl:apply-templates select="id"/> <!-- collection/id -->
         <xsl:apply-templates select="metadata/source"/>
         <xsl:apply-templates select="metadata/relation"/>
@@ -207,7 +216,10 @@
             <xsl:apply-templates/>
         </dc:format>
     </xsl:template>
-    <xsl:template match="identifier">
+    <xsl:template match="url">
+        <dc:identifier>https://wayback.archive-it.org/<xsl:value-of select="//*/id"/>/*/<xsl:value-of select="."/></dc:identifier>
+    </xsl:template>
+    <xsl:template match="archival-url">
         <dc:identifier><xsl:value-of select="."/></dc:identifier>
        <!-- <xsl:if test="starts-with(text(), 'http://')">
             <dc:identifier><xsl:value-of select="."/></dc:identifier>
@@ -279,7 +291,7 @@
         </identifier>-->
     </xsl:template>
     <xsl:template match="id" name="id"> <!-- collection/id (archiveit identifier) -->
-        <dc:identifier><xsl:value-of select="."/></dc:identifier>
+        <dc:identifier>https://archive-it.org/collections/<xsl:value-of select="."/></dc:identifier>
     </xsl:template>
     <xsl:template match="source">
         <dc:source>
